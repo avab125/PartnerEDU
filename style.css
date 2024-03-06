@@ -10,7 +10,7 @@ h1{
 .header {
     display: grid;
     grid-template-columns: 0.78fr 1.7fr;
-    width: 865px;
+    width: 1000px;
     height: 80px;
     padding: 5px;
     background-color: rgb(51, 51, 51);
