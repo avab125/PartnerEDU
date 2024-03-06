@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" integrity="sha512-DTOQO9RWCH3ppGqcWaEA1BIZOC6xxalwEsw9c2QQeAIftl+Vegovlnee1c9QX4TctnWMn13TZye+giMm8e2LwA==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <link rel="stylesheet" href="style.css"/>
+    <script src="main.js"></script>
+    <title>PartnerEDU - Filter Partners</title>
+    <script>
+        window.onload = function(){
+            createPartner(partnerLSInformation);
+        }
+    </script>
+</head>
+
+
+<body>
+
+    <header class="header">
+        <h1>PartnerEDU <i class="fa-regular fa-lightbulb"></i></h1>
+        <div class="menu">
+            <a href="viewPartners.html" style="text-decoration:none"><btn id="item1"> View Partners <i class="fa-solid fa-eye"></i> </btn> </a>
+            <a href="addPartner.html" style="text-decoration:none"><btn id="item2"> Add Partner <i class="fa-solid fa-circle-plus"></i> </btn> </a>
+            <a href="filterPartners.html" style="text-decoration:none"><btn id="item3"> Filter Partners <i class="fa-solid fa-filter"></i> </btn> </a>
+            <a href="searchPartners.html" style="text-decoration:none"><btn id="item4"> Search Partners <i class="fa-solid fa-magnifying-glass"></i> </btn> </a>
+        </div>
+    </header>
+
+    <div id="pageTitle">
+        <h2>Filter Partners</h2>
+    </div>
+    <form class="filter"> 
+    <select id="organizationTypeFilter">
+            <option disabled selected> Type of Organization </option> 
+            <option>Small Business</option> 
+            <option>Corporate Company</option>
+            <option>Non-profit</option>
+            <option> Individual</option> 
+            <option> Educational Institution </option>
+            <option> Government/Law Enforcement</option>
+            <option>Other</option>
+    </select>
+    <select id="resourceFilter">
+        <option disabled selected> Resources </option>
+        <option>Curriculum</option> 
+        <option>Monetary Donations</option>
+        <option>Material Donations</option>
+        <option>Scholarships</option>
+        <option>Programs/Events</option>
+        <option>Other</option>
+    </select>
+    <button id="filterButton" onclick="filterPartners()">Filter</button>
+    </form>
+
+    <ul class="partnerList" id="partnerLists">
+    </ul>
+
+</body>
+</html>

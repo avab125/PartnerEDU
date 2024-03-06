@@ -1,0 +1,253 @@
+body {
+    font-family:'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+    background-color: rgb(210, 210, 210);
+}
+
+h1{
+    margin:auto;
+}
+
+.header {
+    display: grid;
+    grid-template-columns: 0.78fr 1.7fr;
+    width: 865px;
+    height: 80px;
+    padding: 5px;
+    background-color: rgb(51, 51, 51);
+    color: rgb(255, 255, 81);
+    border-style: solid;
+    border-color: black;
+    border-radius: 5px;
+    margin:auto;
+}
+
+.menu{
+    padding: 30px 30px;
+}
+
+.menu #item1, #item2, #item3, #item4{
+    text-decoration: none;
+    border: solid;
+    border-radius: 5px;
+    padding: 5px;
+    color: rgb(0, 0, 0);
+    background-color: rgb(255, 255, 81);
+}
+
+#pageTitle{
+    text-align:center;
+}
+
+
+.partnerList li{
+    margin: auto;
+    width: 700px;
+    background-color: rgb(255, 255, 152);
+    border-style:solid;
+    border-radius: 10px;
+    border-color: rgb(51,51,51);
+    box-shadow: 2px 2px 3px rgb(128, 128, 124);
+    list-style-type: none;
+    display: grid;
+    grid-template-columns: 0.1fr 02fr 0.1fr;
+    margin-bottom: 10px;
+}
+
+.partnerList li #partnerImage{
+    height: 60px;
+    border: solid;
+    margin: 10px 30px;
+    border-radius: 5px;
+    grid-row: 1;
+    grid-column:1;
+}
+
+.partnerList li .partnerInformation{
+    background-color: rgb(0, 0, 0);
+    margin:10px;
+    border-radius: 5px;
+    border-width: 50px;
+    grid-row: 1;
+    grid-column: 2
+}
+
+.partnerList li .partnerInformation tr th{
+    background-color: rgb(192, 192, 192);
+    width: 200px;
+}
+
+.partnerList li .partnerInformation tr td{
+    background-color: rgb(255, 255, 255);
+    width: 200px
+}
+
+.partnerList li .deletePartner{
+    margin: auto;
+    margin-right:5px;
+    background-color: rgb(228, 228, 228);
+    border-style: solid;
+    border-width: 3px;
+    border-color:rgb(51, 51, 51);
+    border-radius: 5px;
+}
+
+.newPartnerInput li{
+    margin: auto;
+    width: 700px;
+    background-color: rgb(255, 255, 152);
+    border-style:solid;
+    border-radius: 10px;
+    border-color: rgb(51,51,51);
+    box-shadow: 2px 2px 3px rgb(128, 128, 124);
+    list-style-type: none;
+    display: grid;
+    grid-template-columns: 0.1fr 02fr 0.1fr;
+    margin-bottom: 10px;
+}
+
+.newPartnerInput li .partnerInformationInput{
+    background-color: rgb(0, 0, 0);
+    margin:10px;
+    border-radius: 5px;
+    border-width: 50px;
+    grid-row: 1;
+    grid-column: 2
+}
+
+.newPartnerInput li .partnerInformationInput tr th{
+    background-color: rgb(192, 192, 192);
+    width: 200px;
+}
+
+.newPartnerInput li .partnerInformationInput tr td{
+    background-color: rgb(255, 255, 255);
+    width: 200px
+}
+
+.newPartnerInput li #partnerImage{
+    height: 60px;
+    border: solid;
+    margin: 10px 30px;
+    border-radius: 5px;
+    grid-row: 1;
+    grid-column:1;
+}
+
+.newPartnerInput label {
+    grid-column: 1;
+    margin-top: 100px;
+    margin-bottom: auto;
+    margin-left: auto;
+    margin-right: auto;
+    background-color: rgb(228, 228, 228);
+    border-style: solid;
+    border-width: 3px;
+    border-color:rgb(51, 51, 51);
+    border-radius: 5px;
+    padding: 3px;
+    grid-row: 1;
+}
+
+input{
+    width: 96.75%;
+}
+
+.save{
+    margin: auto;
+    margin-right:5px;
+    background-color: rgb(228, 228, 228);
+    border-style: solid;
+    border-width: 3px;
+    border-color:rgb(51, 51, 51);
+    border-radius: 5px;
+    grid-row: 1;
+    grid-column: 3;
+}
+
+select{
+    width: 100%;
+}
+
+#partnerImageInput{
+    margin: auto;
+    margin-left: 3px;
+    background-color: rgb(255, 255, 255);
+    border-style: solid;
+    border-width: 2px;
+    border-color:rgb(51, 51, 51);
+    border-radius: 5px;
+    grid-row: 1;
+    grid-column: 1;
+}
+
+.filter{
+    width: 300px;
+    padding: 3px 10px;
+    margin: auto;
+    color: rgb(51,51,51);
+    background-color: rgb(255, 255, 152);
+    border: 3px solid rgb(0, 0, 0);
+    border-radius: 5px;
+    box-shadow: 2px 2px 3px rgb(128, 128, 124);
+}
+
+#organizationTypeFilter{
+    width: 250px;
+    padding: 3px 10px;
+    margin: 5px 25px 5px;
+    color: rgb(51,51,51);
+    background-color: rgb(255, 255, 254);
+    border: 2px solid rgb(51, 51, 51);
+    border-radius: 5px;
+}
+
+#resourceFilter{
+    width: 250px;
+    padding: 3px 10px;
+    margin: 5px 25px 5px;
+    color: rgb(51,51,51);
+    background-color: rgb(255, 255, 254);
+    border: 2px solid rgb(51, 51, 51);
+    border-radius: 5px;
+}
+
+#filterButton{
+    width: 50px;
+    padding: 3px 10px;
+    margin: 5px 125px 5px;
+    color: rgb(0, 0, 0);
+    background-color: rgb(200, 200, 200);
+    border: 2px solid rgb(51, 51, 51);
+    border-radius: 5px;
+}
+
+.searchBar{
+    width: 300px;
+    padding: 3px 10px;
+    margin: auto;
+    color: rgb(51,51,51);
+    background-color: rgb(255, 255, 152);
+    border: 3px solid rgb(0, 0, 0);
+    border-radius: 5px;
+    box-shadow: 2px 2px 3px rgb(128, 128, 124);
+}
+
+#searchInput{
+    width: 250px;
+    padding: 3px 10px;
+    margin: 5px 15px 5px;
+    color: rgb(51,51,51);
+    background-color: rgb(255, 255, 254);
+    border: 2px solid rgb(51, 51, 51);
+    border-radius: 5px;
+}
+
+#searchButton{
+    width: 70px;
+    padding: 3px 10px;
+    margin: 5px 115px 5px;
+    color: rgb(0, 0, 0);
+    background-color: rgb(200, 200, 200);
+    border: 2px solid rgb(51, 51, 51);
+    border-radius: 5px;
+}

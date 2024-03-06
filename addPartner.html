@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" integrity="sha512-DTOQO9RWCH3ppGqcWaEA1BIZOC6xxalwEsw9c2QQeAIftl+Vegovlnee1c9QX4TctnWMn13TZye+giMm8e2LwA==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <link rel="stylesheet" href="style.css"/>
+    <script src="main.js"></script>
+    <title>PartnerEDU - Add Partner</title>
+</head>
+
+
+<body>
+
+    <header class="header">
+        <h1>PartnerEDU <i class="fa-regular fa-lightbulb"></i></h1>
+        <div class="menu">
+            <a href="viewPartners.html" style="text-decoration:none"><btn id="item1"> View Partners <i class="fa-solid fa-eye"></i> </btn> </a>
+            <a href="addPartner.html" style="text-decoration:none"><btn id="item2"> Add Partner <i class="fa-solid fa-circle-plus"></i> </btn> </a>
+            <a href="filterPartners.html" style="text-decoration:none"><btn id="item3"> Filter Partners <i class="fa-solid fa-filter"></i> </btn> </a>
+            <a href="searchPartners.html" style="text-decoration:none"><btn id="item4"> Search Partners <i class="fa-solid fa-magnifying-glass"></i> </btn> </a>
+        </div>
+    </header>
+
+    <div id="pageTitle">
+        <h2>Add Partner</h2>
+    </div>
+
+    <div class="newPartnerInput">
+    
+        <li>
+            <img id="partnerImage" src="https://coffective.com/wp-content/uploads/2018/06/default-featured-image.png.jpg" style="width:100px">
+            <!--<label for="partnerImageInput">Upload Image</label></img>-->
+            <!--<input style="display:none;" id="partnerImageInput" type="file" accept="image/jpeg, image/png, image/jpg"></input>-->
+            <input id="partnerImageInput" placeholder="Enter an image address"/>
+            <table class="partnerInformationInput">
+                <tr> <th>Partner Name:</th> <td> <input id="partnerNameInput" placeholder="Enter a partner name"/> </td> </tr>
+                <tr> <th>Type of Organization:</th> <td>
+                    <form> <select id="typeOfOrganizationInput"> 
+                        <option disabled selected style="color:rgba(51,51,51,1)"> Choose a type of organization </option> 
+                        <option>Small Business</option>
+                        <option>Corporate Company</option>
+                        <option>Non-profit</option>
+                        <option>Individual</option> 
+                        <option>Educational Institution</option>
+                        <option>Government/Law Enforcement</option>
+                        <option>Other</option>
+                    </select> </form>
+                </td> </tr>
+                <tr> <th>Description:</th> <td><input id="descriptionInput" placeholder="Enter a description"/></td> </tr>
+                <tr> <th>Resources:</th> <td>
+                    <form> <select id="typeOfResourceInput"> 
+                        <option disabled selected>Choose a type of resource</option>
+                        <option>Curriculum</option>
+                        <option>Monetary Donations</option>
+                        <option>Material Donations</option>
+                        <option>Scholarships</option>
+                        <option>Programs/Events</option>
+                        <option>Other</option>
+                    </select> </form>
+                </td> </tr>
+                <tr> <th>Main Contact Name:</th> <td><input id="mainContactNameInput" placeholder="Enter a name"/></td> </tr>
+                <tr> <th>Main Contact Email:</th> <td><input id="mainContactEmailInput"placeholder="Enter an email address"/></td> </tr>
+                <tr> <th>Main Contact Phone Number:</th> <td><input id="mainContactPhoneNumberInput" placeholder="Enter a phone number"/></td> </tr>
+            </table>
+            <button class="save" onclick="saveNewPartner()">Save</button>
+        </li>
+    </div>
+
+    <script>
+
+        let inputFile = document.getElementById("partnerImageInput");
+
+        inputFile.onchange = function (){
+            let partnerPicture = document.getElementById("partnerImage");
+            inputFile = document.getElementById("partnerImageInput").value;
+            partnerPicture.src = inputFile;
+            console.log(inputFile);
+        }
+    </script>
+</body>
+</html>
