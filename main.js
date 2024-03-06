@@ -1,39 +1,32 @@
-//Global variables:
+//The array below stores all partner information within Local Storage and is updated dynamically as users interact with the program.
 let partnerLSInformation = JSON.parse(localStorage.getItem('partnerLSInformation')) || [];
-let partnerName = "";
-let partnerOrganizationType = "";
-let partnerDescription = "";
-let partnerResources = "";
-let partnerMainContactName = "";
-let partnerMainContactEmail = "";
-let partnerMainContactPhoneNumber = "";
-let partnerImage = "";
-let deletePartnerID = "";
 
+//------------------------------------------------------------------------------------------------------------------------------------------
 
-//Adding a new partner:
+//Adding a new partner to the Local Storage database:
 function saveNewPartner() {
-    //New partner information inputted by the user is gathered:
-    partnerName = document.getElementById("partnerNameInput").value;
-    partnerOrganizationType = document.getElementById("typeOfOrganizationInput").value;
-    partnerDescription = document.getElementById("descriptionInput").value;
-    partnerResources = document.getElementById("typeOfResourceInput").value;
-    partnerMainContactName = document.getElementById("mainContactNameInput").value;
-    partnerMainContactEmail = document.getElementById("mainContactEmailInput").value;
-    partnerMainContactPhoneNumber = document.getElementById("mainContactPhoneNumberInput").value;
-    partnerImage = document.getElementById("partnerImageInput").value;
+    //All new partner information inputted by the user is gathered from the document and stored in local variables for this function:
+    let partnerName = document.getElementById("partnerNameInput").value;
+    let partnerOrganizationType = document.getElementById("typeOfOrganizationInput").value;
+    let partnerDescription = document.getElementById("descriptionInput").value;
+    let partnerResources = document.getElementById("typeOfResourceInput").value;
+    let partnerMainContactName = document.getElementById("mainContactNameInput").value;
+    let partnerMainContactEmail = document.getElementById("mainContactEmailInput").value;
+    let partnerMainContactPhoneNumber = document.getElementById("mainContactPhoneNumberInput").value;
+    let partnerImage = document.getElementById("partnerImageInput").value;
 
-    //If no partner name is entered, a partner is not added.
+    //If no partner name is entered, this function does not run, and a partner is not added.
     if (partnerName == ""){
         return;
     } else {
-            //Changes default values to "" if no custom value is chosen.
+        //If no values are chosen by the user in the dropdown menus, the values of those fields will be void.
         if (partnerOrganizationType == "Choose a type of organization"){
             partnerOrganizationType = "";
         }
         if (partnerResources == "Choose a type of resource"){
             partnerResources = "";
         }
+        //A new object is created to store all of the new partner information.
         const partner = {
             partnerName: partnerName,
             partnerOrganizationType: partnerOrganizationType,
@@ -44,17 +37,20 @@ function saveNewPartner() {
             partnerMainContactPhoneNumber: partnerMainContactPhoneNumber,
             partnerImage: partnerImage
         }
+        //The partner object is added to the partnerLSInformation list and is entered into Local Storage.
         partnerLSInformation.push(partner);
-    
         localStorage.setItem('partnerLSInformation', JSON.stringify(partnerLSInformation));
-        //Reloads the page and clears all form fields:
+        
+        //Reloads the page and clears all form fields.
         location.reload();
 }
 }
 
+//------------------------------------------------------------------------------------------------------------------------------------------
 
+//Rendering a given partner list onto the document.
 function createPartner (list){
-let id = "";
+    //Iterates through each index of the given list 
     for (var i = 0; i<list.length; i++){
         let specificPartner = list[i];
         let partnerName = specificPartner["partnerName"];
@@ -65,13 +61,17 @@ let id = "";
         let partnerMainContactName = specificPartner["partnerMainContactName"];
         let partnerMainContactEmail = specificPartner["partnerMainContactEmail"];
         let partnerMainContactPhoneNumber = specificPartner["partnerMainContactPhoneNumber"];
-        id = ((Date.now())+(Math.floor(Math.random() * 100)));
+        //Unique IDs are assigned to each partner for deletion purposes. *Please see the deletePartner() function to learn more about the purpose of this feature.*
+        let id = ((Date.now())+(Math.floor(Math.random() * 100)));
         specificPartner.id = id;
 
+        //The list item where the partnered will be rendered is created.
         const newPartnerLi = document.createElement('li');
         newPartnerLi.setAttribute('class', 'partnerLists');
+        //The partner's ID is assigned to its list item.
         newPartnerLi.setAttribute('id', id);
-        
+
+        //The HTML markup for the partner's list item is populated with the partner's information.
         const newPartnerLiMarkup = `
         <img id= "partnerImage" src="${partnerImage}"
             style="width:100px"></img>
@@ -86,35 +86,51 @@ let id = "";
             </table>
             <button class="deletePartner" id="deletePartner" onclick="deletePartner()">Delete Partner</button>
     `;
+        //The list item is populated with the HTML markup.
         newPartnerLi.innerHTML = newPartnerLiMarkup;
+
+        //The list item is added to the document.
         document.getElementById("partnerLists").appendChild(newPartnerLi);
     }
 }
 
+//------------------------------------------------------------------------------------------------------------------------------------------
+
+//Removes partners from the document and from the Local Storage database.
 function deletePartner(){
     let partnerID = "";
+
+    //The ID of the partner that the user wants to delete is collected.
     function locateID (){
         partnerID = event.target.parentNode.id;
       }
     locateID();
+
+    //The index of the partner's ID is located within the partnerLSInformation list.
     let partnerIndex = partnerLSInformation.findIndex(object => {
         return object.id == partnerID;
     });
 
+    //The partner is removed from the document.
     document.getElementById(partnerID).remove();
+
+    //The partner is removed from the partnerLSInformation list and the Local Storage is updated.
     partnerLSInformation.splice(partnerIndex, 1);
     localStorage.setItem('partnerLSInformation', JSON.stringify(partnerLSInformation));
 }
 
+//------------------------------------------------------------------------------------------------------------------------------------------
 
-console.log(partnerLSInformation);
-
+//Searching for partners via user input.
 function searchPartners () {
+    //Prevents the page from reloading and voiding the user input.
     event.preventDefault();
+    
+    //Gathers the user input from the search input form.
     let searchInput = document.getElementById('searchInput').value;
-    console.log(searchInput);
 
-    const searchedPartnerLI = partnerLSInformation.filter((object) => {
+    //Creates a new list of partners that include the user's input data somewhere within their displayed information.
+    const searchedPartnerUL = partnerLSInformation.filter((object) => {
         return(
             object.partnerName.includes(searchInput) ||
             object.partnerOrganizationType.includes(searchInput) ||
@@ -125,16 +141,26 @@ function searchPartners () {
             object.partnerMainContactPhoneNumber.includes(searchInput)
         );
     });
+
+    //Resets the document's list of partners.
     document.getElementById('partnerLists').innerHTML = '';
-    createPartner(searchedPartnerLI);
+    //Renders the filtered partner list.
+    createPartner(searchedPartnerUL);
 }
 
+//------------------------------------------------------------------------------------------------------------------------------------------
+
+//Filtering partners via user input.
 function filterPartners(){
+    //Prevents the page from reloading and voiding the user input.
     event.preventDefault();
+
+    //Gathers the user input from the filter input forms.
     let organizationTypeFilter = document.getElementById('organizationTypeFilter').value;
     let resourceTypeFilter = document.getElementById('resourceFilter').value;
 
-    const filterededPartnerLI1 = partnerLSInformation.filter((object) => {
+    //Creates a new list of partners that include the user's input data (*REGARDING A TYPE OF ORGANIZATION*) somewhere within their displayed information.
+    const filterededPartnerUL1 = partnerLSInformation.filter((object) => {
         return(
             object.partnerName.includes(organizationTypeFilter) ||
             object.partnerOrganizationType.includes(organizationTypeFilter) ||
@@ -145,7 +171,9 @@ function filterPartners(){
             object.partnerMainContactPhoneNumber.includes(organizationTypeFilter)
         );
     });
-    const filterededPartnerLI2 = filterededPartnerLI1.filter((object) => {
+    //Uses the previously created list to create an additional list of partners that include the user's input data (*REGARDING A TYPE OF RESOURCE*) somewhere within their displayed information.
+    //This final list will only include partners that meet the parameters of both user input items.
+    const filterededPartnerUL2 = filterededPartnerUL1.filter((object) => {
         return(
             object.partnerName.includes(resourceTypeFilter) ||
             object.partnerOrganizationType.includes(resourceTypeFilter) ||
@@ -156,6 +184,9 @@ function filterPartners(){
             object.partnerMainContactPhoneNumber.includes(resourceTypeFilter)
             );
     });
+    
+    //Resets the document's list of partners.
     document.getElementById('partnerLists').innerHTML = '';
-    createPartner(filterededPartnerLI2);
+    //Renders the filtered partner list.
+    createPartner(filterededPartnerUL2);
 }
