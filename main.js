@@ -61,7 +61,8 @@ function createPartner (list){
         let partnerMainContactName = specificPartner["partnerMainContactName"];
         let partnerMainContactEmail = specificPartner["partnerMainContactEmail"];
         let partnerMainContactPhoneNumber = specificPartner["partnerMainContactPhoneNumber"];
-        //Unique IDs are assigned to each partner for deletion purposes. *Please see the deletePartner() function to learn more about the purpose of this feature.*
+        //Unique IDs are assigned to each partner for deletion purposes.
+        //*Please see the deletePartner() function to learn more about the purpose of this feature.*
         let id = ((Date.now())+(Math.floor(Math.random() * 100)));
         specificPartner.id = id;
 
@@ -159,7 +160,8 @@ function filterPartners(){
     let organizationTypeFilter = document.getElementById('organizationTypeFilter').value;
     let resourceTypeFilter = document.getElementById('resourceFilter').value;
 
-    //Creates a new list of partners that include the user's input data (*REGARDING A TYPE OF ORGANIZATION*) somewhere within their displayed information.
+    /*Creates a new list of partners that include the user's input data (*REGARDING A TYPE OF ORGANIZATION*)
+    somewhere within their displayed information.*/
     const filterededPartnerUL1 = partnerLSInformation.filter((object) => {
         return(
             object.partnerName.includes(organizationTypeFilter) ||
@@ -171,7 +173,8 @@ function filterPartners(){
             object.partnerMainContactPhoneNumber.includes(organizationTypeFilter)
         );
     });
-    //Uses the previously created list to create an additional list of partners that include the user's input data (*REGARDING A TYPE OF RESOURCE*) somewhere within their displayed information.
+    /*Uses the previously created list to create an additional list of partners that include the user's input data
+    (*REGARDING A TYPE OF RESOURCE*) somewhere within their displayed information.*/
     //This final list will only include partners that meet the parameters of both user input items.
     const filterededPartnerUL2 = filterededPartnerUL1.filter((object) => {
         return(
