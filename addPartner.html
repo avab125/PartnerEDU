@@ -9,9 +9,7 @@
     <title>PartnerEDU - Add Partner</title>
 </head>
 
-
 <body>
-
     <header class="header">
         <h1>PartnerEDU <i class="fa-regular fa-lightbulb"></i></h1>
         <div class="menu">
@@ -27,9 +25,10 @@
     </div>
 
     <div class="newPartnerInput">
-    
         <li>
             <img id="partnerImage" src="https://coffective.com/wp-content/uploads/2018/06/default-featured-image.png.jpg" style="width:100px">
+            
+            <!--User input fields for creating new partners.-->
             <input id="partnerImageInput" placeholder="Enter an image address"/>
             <table class="partnerInformationInput">
                 <tr> <th>Partner Name:</th> <td> <input id="partnerNameInput" placeholder="Enter a partner name"/> </td> </tr>
@@ -61,12 +60,14 @@
                 <tr> <th>Main Contact Email:</th> <td><input id="mainContactEmailInput"placeholder="Enter an email address"/></td> </tr>
                 <tr> <th>Main Contact Phone Number:</th> <td><input id="mainContactPhoneNumberInput" placeholder="Enter a phone number"/></td> </tr>
             </table>
+            
+            <!--When clicked, the button below saves the new partner that the user inputted.-->
             <button class="save" onclick="saveNewPartner()">Save</button>
         </li>
     </div>
 
     <script>
-        <!--Changes the image of the partner to the image that the user inputs-->
+        //Changes the image of the partner to image address inputted by the user.
         let inputFile = document.getElementById("partnerImageInput");
 
         inputFile.onchange = function (){
