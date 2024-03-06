@@ -8,16 +8,15 @@
     <script src="main.js"></script>
     <title>PartnerEDU - Search Partners</title>
     <script>
+        //Renders the partners currently stored in Local Storage on the document.
         window.onload = function(){
             createPartner(partnerLSInformation);
-            searchPartners();
+            //searchPartners();
         }
     </script>
 </head>
 
-
 <body>
-
     <header class="header">
         <h1>PartnerEDU <i class="fa-regular fa-lightbulb"></i></h1>
         <div class="menu">
@@ -33,10 +32,14 @@
     </div>
 
     <form class="searchBar">
-        <input type="text" id="searchInput" placeholder="Search partner keywords" />
+        <!--All user search input is colleccted in the text input below.-->
+        <input type="text" id="searchInput" placeholder="Search partner keywords"/>
+        <!--When clicked, the button below will filter the partner list displayed on the screen to accomodate the user's input.-->
         <button id="searchButton" onclick="searchPartners()"> Search </button>
     </form>
+    
     <ul class="partnerList" id="partnerLists">
+        <!--All partners are rendered within this unordered list.-->
     </ul>
 </body>
 </html>
