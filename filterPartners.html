@@ -8,15 +8,14 @@
     <script src="main.js"></script>
     <title>PartnerEDU - Filter Partners</title>
     <script>
+        //Renders the partners currently stored in Local Storage on the document.
         window.onload = function(){
             createPartner(partnerLSInformation);
         }
     </script>
 </head>
 
-
 <body>
-
     <header class="header">
         <h1>PartnerEDU <i class="fa-regular fa-lightbulb"></i></h1>
         <div class="menu">
@@ -30,6 +29,8 @@
     <div id="pageTitle">
         <h2>Filter Partners</h2>
     </div>
+
+    <!--User input used for filtering the displayed partner list is collected via the dropdown forms below.-->
     <form class="filter"> 
     <select id="organizationTypeFilter">
             <option disabled selected> Type of Organization </option> 
@@ -50,10 +51,13 @@
         <option>Programs/Events</option>
         <option>Other</option>
     </select>
+
+    <!--When clicked, the button below will filter the partner list displayed on the screen to accomodate the user's input.-->
     <button id="filterButton" onclick="filterPartners()">Filter</button>
     </form>
 
     <ul class="partnerList" id="partnerLists">
+        <!--All partners are rendered within this unordered list.-->
     </ul>
 
 </body>
