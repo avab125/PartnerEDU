@@ -30,8 +30,6 @@
     
         <li>
             <img id="partnerImage" src="https://coffective.com/wp-content/uploads/2018/06/default-featured-image.png.jpg" style="width:100px">
-            <!--<label for="partnerImageInput">Upload Image</label></img>-->
-            <!--<input style="display:none;" id="partnerImageInput" type="file" accept="image/jpeg, image/png, image/jpg"></input>-->
             <input id="partnerImageInput" placeholder="Enter an image address"/>
             <table class="partnerInformationInput">
                 <tr> <th>Partner Name:</th> <td> <input id="partnerNameInput" placeholder="Enter a partner name"/> </td> </tr>
@@ -68,14 +66,13 @@
     </div>
 
     <script>
-
+        <!--Changes the image of the partner to the image that the user inputs-->
         let inputFile = document.getElementById("partnerImageInput");
 
         inputFile.onchange = function (){
             let partnerPicture = document.getElementById("partnerImage");
             inputFile = document.getElementById("partnerImageInput").value;
             partnerPicture.src = inputFile;
-            console.log(inputFile);
         }
     </script>
 </body>
